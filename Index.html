@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendamento - Barbearia</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #111;
+      color: white;
+    }
+
+    header {
+      background: #050505;
+      text-align: center;
+      padding: 30px 15px;
+      border-bottom: 2px solid #d4af37;
+    }
+
+    header h1 {
+      color: #d4af37;
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      color: #ccc;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 25px 18px;
+    }
+
+    .titulo {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #d4af37;
+    }
+
+    .precos {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .preco {
+      background: #1c1c1c;
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 16px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .preco span:last-child {
+      color: #d4af37;
+      font-weight: bold;
+    }
+
+    .agendamento {
+      background: #1c1c1c;
+      padding: 22px;
+      border-radius: 12px;
+      border: 1px solid #333;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 7px;
+      color: #ddd;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 13px;
+      border-radius: 8px;
+      border: none;
+      background: #292929;
+      color: white;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 22px;
+      padding: 15px;
+      border: none;
+      border-radius: 8px;
+      background: #d4af37;
+      color: #111;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #f0c94f;
+    }
+
+    footer {
+      text-align: center;
+      color: #888;
+      padding: 25px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>💈 BARBEARIA</h1>
+  <p>Agende seu horário de forma rápida e fácil</p>
+</header>
+
+<div class="container">
+
+  <h2 class="titulo">Tabela de preços</h2>
+
+  <div class="precos">
+    <div class="preco">
+      <span>Degradê Navalhado</span>
+      <span>R$ 25</span>
+    </div>
+
+    <div class="preco">
+      <span>Degradê Normal</span>
+      <span>R$ 20</span>
+    </div>
+
+    <div class="preco">
+      <span>Social</span>
+      <span>R$ 25</span>
+    </div>
+
+    <div class="preco">
+      <span>Sobrancelha</span>
+      <span>R$ 5</span>
+    </div>
+
+    <div class="preco">
+      <span>Barba</span>
+      <span>R$ 10</span>
+    </div>
+  </div>
+
+  <div class="agendamento">
+
+    <h2 class="titulo">Agende seu horário</h2>
+
+    <label>Seu nome</label>
+    <input type="text" id="nome" placeholder="Digite seu nome">
+
+    <label>Escolha o serviço</label>
+    <select id="servico">
+      <option value="">Selecione</option>
+      <option>Degradê Navalhado - R$25</option>
+      <option>Degradê Normal - R$20</option>
+      <option>Social - R$25</option>
+      <option>Sobrancelha - R$5</option>
+      <option>Barba - R$10</option>
+    </select>
+
+    <label>Escolha a data</label>
+    <input type="date" id="data">
+
+    <label>Escolha o horário</label>
+    <input type="time" id="horario">
+
+    <button onclick="agendar()">AGENDAR PELO WHATSAPP</button>
+
+  </div>
+
+</div>
+
+<footer>
+  © 2026 Barbearia — Todos os direitos reservados.
+</footer>
+
+<script>
+function agendar() {
+
+  const nome = document.getElementById("nome").value;
+  const servico = document.getElementById("servico").value;
+  const data = document.getElementById("data").value;
+  const horario = document.getElementById("horario").value;
+
+  if (!nome || !servico || !data || !horario) {
+    alert("Preencha todos os campos!");
+    return;
+  }
+
+  // COLOQUE SEU NÚMERO DO WHATSAPP AQUI
+  const numero = "5543999999999";
+
+  const mensagem =
+    "Olá! Quero agendar um horário.%0A%0A" +
+    "Nome: " + nome + "%0A" +
+    "Serviço: " + servico + "%0A" +
+    "Data: " + data + "%0A" +
+    "Horário: " + horario;
+
+  window.open(
+    "https://wa.me/" + numero + "?text=" + mensagem,
+    "_blank"
+  );
+}
+</script>
+
+</body>
+</html>
